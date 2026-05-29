@@ -1,0 +1,42 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const notes = (await getCollection('notes', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const fmt = (d: Date) => d.toISOString().slice(0, 10);
+---
+<Base title="Notes — Andrew Spiezio">
+  <Nav />
+  <section class="notes-page">
+    <div class="container">
+      <div class="notes-head">
+        <h1>Notes.</h1>
+        <span class="mono" style="color: var(--ink-faint);">
+          {notes.length === 0 ? 'Empty for now' : `${notes.length} ${notes.length === 1 ? 'post' : 'posts'}`}
+        </span>
+      </div>
+
+      {notes.length === 0 ? (
+        <div class="notes-empty">
+          Nothing here yet. Working on something — check back.
+        </div>
+      ) : (
+        <ul class="notes-list">
+          {notes.map((post) => (
+            <li>
+              <span class="date mono">{fmt(post.data.pubDate)}</span>
+              <a href={`/notes/${post.id}`}>
+                <div class="title">{post.data.title}</div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </section>
+  <Footer />
+</Base>

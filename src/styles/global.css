@@ -308,3 +308,48 @@ a { color: inherit; text-decoration: none; }
   .footer .right ul { text-align: left; }
   .colophon { flex-direction: column; gap: 12px; }
 }
+
+/* ─────────────── Notes ─────────────── */
+.notes-page { padding: 100px 0 120px; }
+.notes-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 56px;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 28px;
+}
+.notes-head h1 {
+  font-family: "Maratype", serif;
+  font-weight: 400;
+  font-size: 88px;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+}
+.notes-empty {
+  padding: 60px 0;
+  border-top: 1px solid var(--rule-soft);
+  border-bottom: 1px solid var(--rule-soft);
+  text-align: center;
+  color: var(--ink-dim);
+  font-style: italic;
+  font-size: 19px;
+}
+.notes-list { list-style: none; }
+.notes-list li {
+  border-top: 1px solid var(--rule);
+  padding: 28px 0;
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 32px;
+  align-items: baseline;
+}
+.notes-list li:last-child { border-bottom: 1px solid var(--rule); }
+.notes-list .date { color: var(--ink-faint); }
+.notes-list .title {
+  font-family: "Maratype", serif;
+  font-size: 32px;
+  line-height: 1.1;
+  color: var(--ink);
+}
+.notes-list a:hover .title { color: var(--accent); }
