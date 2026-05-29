@@ -1,0 +1,35 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const notes = await getCollection('notes', ({ data }) => !data.draft);
+  return notes.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const fmt = (d: Date) => d.toISOString().slice(0, 10);
+---
+<Base title={`${post.data.title} — Andrew Spiezio`} description={post.data.description}>
+  <Nav />
+  <article class="post">
+    <div class="container">
+      <div class="post-meta mono">
+        <a href="/notes" style="color: var(--ink-faint);">← Notes</a>
+        <span style="margin: 0 12px; color: var(--rule);">/</span>
+        <span>{fmt(post.data.pubDate)}</span>
+      </div>
+      <h1 class="post-title">{post.data.title}</h1>
+      <div class="post-prose">
+        <Content />
+      </div>
+    </div>
+  </article>
+  <Footer />
+</Base>
