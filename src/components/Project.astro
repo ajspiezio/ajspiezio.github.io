@@ -1,0 +1,27 @@
+---
+// src/components/Project.astro
+interface Props {
+  number: string;
+  year: string;
+  title: string;
+  tag: string;
+  stack: string[];
+}
+const { number, year, title, tag, stack } = Astro.props;
+---
+<article class="container">
+  <div class="project fade-in">
+    <aside class="project-meta">
+      <span class="number">{number}</span>
+      <div class="mono">{year}</div>
+      <div class="stack mono">
+        {stack.map((line) => (<div>{line}</div>))}
+      </div>
+    </aside>
+    <div class="project-body">
+      <h3 class="project-title">{title}</h3>
+      <p class="project-tag">{tag}</p>
+      <slot />
+    </div>
+  </div>
+</article>
