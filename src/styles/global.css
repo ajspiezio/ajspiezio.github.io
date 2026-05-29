@@ -77,3 +77,28 @@ a { color: inherit; text-decoration: none; }
   :root { --container-pad: 24px; }
   body { font-size: 16px; }
 }
+
+/* ─────────────── Nav ─────────────── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(12, 10, 8, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule-soft);
+}
+.nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 0;
+}
+.nav .mark {
+  font-family: "Maratype", serif;
+  font-size: 22px;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+.nav ul { display: flex; gap: 38px; list-style: none; }
+.nav ul a { color: var(--ink-mid); transition: color 200ms ease; }
+.nav ul a:hover { color: var(--ink); }
