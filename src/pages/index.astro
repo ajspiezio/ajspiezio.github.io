@@ -27,8 +27,8 @@ import Footer from '../components/Footer.astro';
     stack={["FastAPI", "React · TypeScript", "Azure App Service", "SQLite · Redis", "Azure AD / Easy Auth"]}
   >
     <p>
-      Built as the sole developer over twelve months. Judge turns 1,150+ pages of vendor error
-      documentation into a searchable, schematic-aware interface —
+      Built solo since February. Judge turns 1,150+ pages of vendor error documentation into a
+      searchable, schematic-aware interface —
       <strong>tap an error code, see the part on the machine</strong>. Two product lines (RBG-100, GLR-100),
       driven by a single configuration so adding a third would be config-only.
     </p>
@@ -38,11 +38,10 @@ import Footer from '../components/Footer.astro';
       940-test pre-ship gate before every Azure deploy.
     </p>
     <Decision>
-      To make Judge sellable to other service companies, I hardened it: server-side sessions
-      on top of Azure AD SSO, a tamper-evident audit log (SQLite triggers plus a SHA-256 hash
-      chain plus a standalone verifier CLI), per-tenant CORS, Redis-backed rate limiting, and
-      a boot-time encryption-at-rest posture check that refuses to start if the data dir
-      isn't on the encrypted mount.
+      To make Judge sellable to other service companies, I hardened the security top to bottom —
+      single sign-on for every user, a tamper-evident audit log that proves nobody quietly
+      edited yesterday's records, per-customer access rules, abuse rate limits, and a startup
+      check that refuses to run unless the data is sitting on encrypted disk.
     </Decision>
   </Project>
 
@@ -54,10 +53,10 @@ import Footer from '../components/Footer.astro';
     stack={["Python", "USB · serial", "Cross-platform CLI", "Optional web GUI"]}
   >
     <p>
-      Glory bill counters and validators ship with vendor software that's Windows-only, opaque,
-      and slow to iterate on. Custos talks to the device directly —
-      <strong>two-way serial I/O over USB, device enumeration, scriptable commands</strong> — so I
-      can diagnose a counter from a terminal instead of a vendor GUI.
+      Glory bill counters and validators ship with Windows-only vendor software — and nothing
+      for talking to the device any other way. Custos opens that up:
+      <strong>two-way serial I/O over USB, device enumeration, scriptable commands</strong>. Before
+      Custos there was no way to script against these counters at all.
     </p>
     <p>
       Ships as a single CLI binary with an optional web GUI for techs who'd rather click than type.
