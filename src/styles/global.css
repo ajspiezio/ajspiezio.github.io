@@ -1,0 +1,79 @@
+/* ─────────────── Tokens ─────────────── */
+:root {
+  --bg:         #0c0a08;
+  --bg-2:       #14110d;
+  --rule:       #2a241c;
+  --rule-soft:  #1c1812;
+  --ink:        #ece6da;
+  --ink-mid:    #b3aa97;
+  --ink-dim:    #807767;
+  --ink-faint:  #4f4839;
+  --accent:     #c8a062;
+  --accent-2:   #d6b884;
+
+  --container-max: 1240px;
+  --container-pad: 56px;
+}
+
+/* ─────────────── Fonts ─────────────── */
+@font-face {
+  font-family: "Maratype";
+  src: url("/fonts/Maratype.otf") format("opentype");
+  font-display: swap;
+}
+
+/* ─────────────── Reset + base ─────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Newsreader", "Iowan Old Style", Georgia, serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ─────────────── Utilities ─────────────── */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+}
+
+.mono {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.display {
+  font-family: "Maratype", "Newsreader", serif;
+  font-weight: 400;
+}
+
+/* ─────────────── Entrance fades ─────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 600ms ease-out, transform 600ms ease-out;
+  }
+  .fade-in.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 720px) {
+  :root { --container-pad: 24px; }
+  body { font-size: 16px; }
+}
