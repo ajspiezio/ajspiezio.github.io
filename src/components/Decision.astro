@@ -1,0 +1,11 @@
+---
+// src/components/Decision.astro
+interface Props {
+  label?: string;
+}
+const { label = 'Decision worth talking about' } = Astro.props;
+---
+<div class="pull-quote">
+  <span class="label">{label}</span>
+  <slot />
+</div>
